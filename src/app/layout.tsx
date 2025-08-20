@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Button } from "@/components/ui/button";
+import { Github } from "lucide-react";
+import { Footer } from "react-day-picker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +33,48 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SidebarProvider>
+            <div className="min-h-screen flex w-full bg-background">
+              <AppSidebar />
+
+              <div className="flex-1 flex flex-col">
+                <header className="h-16 border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-40">
+                  <div className="flex items-center justify-between h-full px-6">
+                    <div className="flex items-center gap-4">
+                      <SidebarTrigger />
+                      <div className="flex items-center gap-2">
+                        <h1 className="text-xl font-bold bg-primary bg-clip-text text-transparent">
+                          DevTools Hub
+                        </h1>
+                        <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
+                          Beta
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      {/* <ThemeToggle /> */}
+                      <Button variant="ghost" size="sm">
+                        <Github className="w-4 h-4" />
+                        Star on GitHub
+                      </Button>
+                    </div>
+                  </div>
+                </header>
+
+                <main className="flex-1 overflow-auto">{children}</main>
+
+                <Footer />
+              </div>
+            </div>
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

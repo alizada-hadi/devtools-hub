@@ -1,103 +1,244 @@
-import Image from "next/image";
+"use client";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { useRouter } from "next/navigation";
+import {
+  Code2,
+  Image,
+  Type,
+  Key,
+  Palette,
+  FileCode,
+  Zap,
+  Sparkles,
+  TrendingUp,
+  Clock,
+} from "lucide-react";
+import { useState } from "react";
+import { ToolCard } from "@/components/tools-card";
+import { SearchBar } from "@/components/search-bar";
 
+const allTools = [
+  {
+    title: "Favicon Generator",
+    description:
+      "Generate favicons in all required sizes and formats for your website",
+    icon: Image,
+    category: "Generators",
+    url: "/favicon-generator",
+    isPopular: true,
+  },
+  {
+    title: "JWT Decoder",
+    description:
+      "Decode and verify JSON Web Tokens with detailed payload inspection",
+    icon: Key,
+    category: "Decoders",
+    url: "/jwt-decoder",
+    isPopular: true,
+  },
+  {
+    title: "Font Converter",
+    description:
+      "Convert fonts between different formats like TTF, WOFF, WOFF2",
+    icon: Type,
+    category: "Converters",
+    url: "/font-converter",
+    isPopular: true,
+  },
+  {
+    title: "PWA Icon Generator",
+    description: "Generate all required icon sizes for Progressive Web Apps",
+    icon: Zap,
+    category: "Generators",
+    url: "/pwa-icons",
+  },
+  {
+    title: "Color Converter",
+    description: "Convert colors between HEX, RGB, HSL, and other formats",
+    icon: Palette,
+    category: "Converters",
+    url: "/color-converter",
+  },
+  {
+    title: "Base64 Encoder/Decoder",
+    description: "Encode and decode Base64 strings with ease",
+    icon: FileCode,
+    category: "Encoders",
+    url: "/base64-encoder",
+  },
+  {
+    title: "QR Code Generator",
+    description: "Generate customizable QR codes for URLs, text, and more",
+    icon: Code2,
+    category: "Generators",
+    url: "/qr-generator",
+  },
+  {
+    title: "URL Encoder/Decoder",
+    description: "Encode and decode URLs for safe transmission",
+    icon: FileCode,
+    category: "Encoders",
+    url: "/url-encoder",
+  },
+];
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const filteredTools = allTools.filter(
+    (tool) =>
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const popularTools = allTools.filter((tool) => tool.isPopular);
+  const recentTools = allTools.slice(0, 4);
+
+  const handleToolClick = (url: string) => {
+    router.push(url);
+  };
+  return (
+    <div className="p-6 space-y-8">
+      {/* Hero Section */}
+      <div className="text-center space-y-6 py-12">
+        <div className="space-y-4">
+          <h1 className="text-4xl md:text-6xl font-bold bg-primary bg-clip-text text-transparent">
+            DevTools Hub
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            All your essential development tools in one place. Fast, reliable,
+            and always free.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="max-w-2xl mx-auto">
+          <SearchBar onSearch={setSearchQuery} />
+        </div>
+
+        <div className="flex items-center justify-center gap-4 pt-4">
+          <Button size="lg">
+            <Sparkles className="w-5 h-5" />
+            Explore Tools
+          </Button>
+          <Button variant="outline" size="lg">
+            <Code2 className="w-5 h-5" />
+            View Source
+          </Button>
+        </div>
+      </div>
+
+      {/* Search Results or Tool Categories */}
+      {searchQuery ? (
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold">
+              Search Results ({filteredTools.length})
+            </h2>
+            {filteredTools.length > 0 && (
+              <Button variant="ghost" onClick={() => setSearchQuery("")}>
+                Clear Search
+              </Button>
+            )}
+          </div>
+
+          {filteredTools.length === 0 ? (
+            <Card className="p-12 text-center bg-gradient-secondary">
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto">
+                    <Code2 className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-xl font-semibold">No tools found</h3>
+                  <p className="text-muted-foreground">
+                    Try searching for something else or browse our categories
+                  </p>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setSearchQuery("")}
+                  >
+                    Browse All Tools
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredTools.map((tool) => (
+                <ToolCard
+                  key={tool.title}
+                  title={tool.title}
+                  description={tool.description}
+                  icon={tool.icon}
+                  category={tool.category}
+                  isPopular={tool.isPopular}
+                  onClick={() => handleToolClick(tool.url)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="space-y-12">
+          {/* Popular Tools */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <TrendingUp className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-bold">Popular Tools</h2>
+              <Badge variant="secondary" className="ml-2">
+                Most Used
+              </Badge>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {popularTools.map((tool) => (
+                <ToolCard
+                  key={tool.title}
+                  title={tool.title}
+                  description={tool.description}
+                  icon={tool.icon}
+                  category={tool.category}
+                  isPopular={tool.isPopular}
+                  onClick={() => handleToolClick(tool.url)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* All Tools */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <Code2 className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-bold">All Tools</h2>
+              <Badge variant="outline" className="ml-2">
+                {allTools.length} Tools
+              </Badge>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {allTools.map((tool) => (
+                <ToolCard
+                  key={tool.title}
+                  title={tool.title}
+                  description={tool.description}
+                  icon={tool.icon}
+                  category={tool.category}
+                  isPopular={tool.isPopular}
+                  onClick={() => handleToolClick(tool.url)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
