@@ -6,7 +6,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
-import { Footer } from "react-day-picker";
+import { Footer } from "@/components/footer";
+import { ModeToggle } from "@/components/theme-switcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +50,7 @@ export default function RootLayout({
                     <div className="flex items-center gap-4">
                       <SidebarTrigger />
                       <div className="flex items-center gap-2">
-                        <h1 className="text-xl font-bold bg-primary bg-clip-text text-transparent">
+                        <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                           DevTools Hub
                         </h1>
                         <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
@@ -64,6 +65,7 @@ export default function RootLayout({
                         <Github className="w-4 h-4" />
                         Star on GitHub
                       </Button>
+                      <ModeToggle />
                     </div>
                   </div>
                 </header>

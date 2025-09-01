@@ -33,7 +33,7 @@ const toolCategories = [
     label: "Generators",
     items: [
       { title: "Favicon Generator", url: "/favicon-generator", icon: Image },
-      { title: "PWA Icons", url: "/pwa-icons", icon: Zap },
+      { title: "PWA Icons", url: "/pwa-generator", icon: Zap },
       { title: "QR Code", url: "/qr-generator", icon: Code2 },
     ],
   },
@@ -71,12 +71,14 @@ export function AppSidebar() {
       {/* Sidebar Header */}
       <SidebarHeader className=" border-b border-sidebar-border">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
             <Code2 className="w-5 h-5 text-white" />
           </div>
           {!collapsed && (
             <div className="min-w-0">
-              <h2 className="font-bold text-lg text-primary">DevTools Hub</h2>
+              <h2 className="font-bold text-lg bg-gradient-primary bg-clip-text text-transparent">
+                DevTools Hub
+              </h2>
               <p className="text-xs text-muted-foreground truncate">
                 All-in-one toolkit
               </p>

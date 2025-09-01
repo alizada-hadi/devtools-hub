@@ -111,7 +111,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-center space-y-6 py-12">
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl font-bold bg-primary bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             DevTools Hub
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
