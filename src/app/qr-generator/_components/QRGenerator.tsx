@@ -34,13 +34,13 @@ export default function QRCodeGenerator() {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-8 max-w-7xl">
+      <div className="container mx-auto p-6">
         <div className=" mx-auto">
           {/* Header */}
           <div className=" mb-8">
             <div className="flex items-center  gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
-                <QrCode className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
+                <QrCode className="w-5 h-5 text-white" />
               </div>
               <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                 QR Code Generator

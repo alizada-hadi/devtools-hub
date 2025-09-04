@@ -12,7 +12,7 @@ import { ImageUploader } from "./image-uploader";
 import { FormatSelector } from "./format-selector";
 import { ImageSettings } from "./image-settings";
 import { ConversionResults } from "./conversion-result";
-import { Image } from "lucide-react";
+import { Image as ImageIcon } from "lucide-react";
 
 interface ConvertedImage {
   format: string;
@@ -45,11 +45,11 @@ export default function ImageConverter() {
     return new Promise((resolve, reject) => {
       const img = new window.Image();
       img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
         if (!ctx) {
-          reject(new Error('Could not get canvas context'));
+          reject(new Error("Could not get canvas context"));
           return;
         }
 
@@ -58,7 +58,7 @@ export default function ImageConverter() {
         // Apply resize if specified
         if (maxWidth || maxHeight) {
           const aspectRatio = width / height;
-          
+
           if (maxWidth && maxHeight) {
             // Fit within both constraints
             if (width > maxWidth || height > maxHeight) {
@@ -86,32 +86,43 @@ export default function ImageConverter() {
         ctx.drawImage(img, 0, 0, width, height);
 
         // Convert to the desired format
-        const mimeType = format === 'jpeg' ? 'image/jpeg' : 
-                        format === 'png' ? 'image/png' :
-                        format === 'webp' ? 'image/webp' :
-                        format === 'gif' ? 'image/gif' :
-                        format === 'bmp' ? 'image/bmp' : 'image/png';
+        const mimeType =
+          format === "jpeg"
+            ? "image/jpeg"
+            : format === "png"
+            ? "image/png"
+            : format === "webp"
+            ? "image/webp"
+            : format === "gif"
+            ? "image/gif"
+            : format === "bmp"
+            ? "image/bmp"
+            : "image/png";
 
-        canvas.toBlob((blob) => {
-          if (blob) {
-            resolve({ blob, canvas });
-          } else {
-            reject(new Error('Failed to convert image'));
-          }
-        }, mimeType, quality / 100);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve({ blob, canvas });
+            } else {
+              reject(new Error("Failed to convert image"));
+            }
+          },
+          mimeType,
+          quality / 100
+        );
       };
-      
-      img.onerror = () => reject(new Error('Failed to load image'));
+
+      img.onerror = () => reject(new Error("Failed to load image"));
       img.src = URL.createObjectURL(file);
     });
   };
 
   const formatBytes = (bytes: number): string => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
   const handleConvert = async () => {
@@ -141,7 +152,7 @@ export default function ImageConverter() {
 
       setConvertedImages([result]);
     } catch (error) {
-      console.error('Conversion failed:', error);
+      console.error("Conversion failed:", error);
       // You might want to show an error message to the user here
     } finally {
       setIsConverting(false);
@@ -150,11 +161,11 @@ export default function ImageConverter() {
 
   return (
     <>
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <div className="container mx-auto p-6">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-            <Image className="w-5 h-5 text-white" />
+            <ImageIcon className="w-5 h-5 text-white" />
           </div>
           <div>
             <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">

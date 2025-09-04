@@ -151,7 +151,7 @@ self.addEventListener('fetch', (event) => {
 </script>`;
   };
 
-  const copyToClipboard = (text: string, type: string) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
       toast("Copied to clipboard");
     });
@@ -226,7 +226,7 @@ self.addEventListener('fetch', (event) => {
             </div>
             <div className="flex gap-2">
               <Button
-                onClick={() => copyToClipboard(manifestContent, "Manifest")}
+                onClick={() => copyToClipboard(manifestContent)}
                 variant="outline"
                 size="sm"
               >
@@ -266,9 +266,7 @@ self.addEventListener('fetch', (event) => {
             </div>
             <div className="flex gap-2">
               <Button
-                onClick={() =>
-                  copyToClipboard(serviceWorkerContent, "Service Worker")
-                }
+                onClick={() => copyToClipboard(serviceWorkerContent)}
                 variant="outline"
                 size="sm"
               >
@@ -304,7 +302,7 @@ self.addEventListener('fetch', (event) => {
               </CardDescription>
             </div>
             <Button
-              onClick={() => copyToClipboard(htmlSnippet, "HTML snippet")}
+              onClick={() => copyToClipboard(htmlSnippet)}
               variant="outline"
               size="sm"
             >

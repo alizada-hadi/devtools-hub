@@ -119,7 +119,7 @@ export default function FontConverter() {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-8 max-w-7xl">
+      <div className="container mx-auto p-6">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

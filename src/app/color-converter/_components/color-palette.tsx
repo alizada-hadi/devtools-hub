@@ -17,7 +17,7 @@ export function ColorPalette({ baseColor }: ColorPaletteProps) {
       setCopiedColor(color);
       toast(`Color ${color} copied to clipboard`);
       setTimeout(() => setCopiedColor(null), 2000);
-    } catch (err) {
+    } catch {
       toast("Failed to copy to clipboard");
     }
   };

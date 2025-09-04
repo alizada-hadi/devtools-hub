@@ -1,7 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Download, Image, Loader2, ArrowRight, FileImage } from "lucide-react";
+import {
+  Download,
+  Image as ImageIcon,
+  Loader2,
+  ArrowRight,
+  FileImage,
+} from "lucide-react";
+import Image from "next/image";
 
 interface ConvertedImage {
   format: string;
@@ -39,7 +46,7 @@ export function ConversionResults({
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <div className="p-4 bg-muted rounded-full mb-6">
-          <Image className="w-8 h-8 text-muted-foreground" />
+          <ImageIcon className="w-8 h-8 text-muted-foreground" />
         </div>
         <h3 className="font-semibold text-lg mb-2 text-muted-foreground">
           No images converted yet
@@ -95,10 +102,15 @@ export function ConversionResults({
                 ratio={16 / 9}
                 className="bg-muted rounded-lg overflow-hidden"
               >
-                <img
-                  src={URL.createObjectURL(originalImage)}
+                <Image
+                  src={
+                    URL.createObjectURL(originalImage) ||
+                    "/images/placeholder.png"
+                  }
                   alt="Original image"
                   className="w-full h-full object-contain"
+                  width={500}
+                  height={500}
                 />
               </AspectRatio>
               <div className="text-center">
@@ -129,10 +141,12 @@ export function ConversionResults({
                   ratio={16 / 9}
                   className="bg-muted rounded-lg overflow-hidden"
                 >
-                  <img
-                    src={image.url}
+                  <Image
+                    src={image.url || "/images/placeholder.png"}
                     alt="Converted image"
                     className="w-full h-full object-contain"
+                    width={500}
+                    height={500}
                   />
                 </AspectRatio>
                 <div className="text-center">
@@ -174,24 +188,30 @@ export function ConversionResults({
                       {(() => {
                         // Parse sizes properly (e.g., "1.5 MB" -> 1.5 * 1024 * 1024)
                         const parseSize = (sizeStr: string): number => {
-                          const parts = sizeStr.split(' ');
+                          const parts = sizeStr.split(" ");
                           const value = parseFloat(parts[0]);
                           const unit = parts[1];
-                          
+
                           switch (unit) {
-                            case 'Bytes': return value;
-                            case 'KB': return value * 1024;
-                            case 'MB': return value * 1024 * 1024;
-                            case 'GB': return value * 1024 * 1024 * 1024;
-                            default: return value;
+                            case "Bytes":
+                              return value;
+                            case "KB":
+                              return value * 1024;
+                            case "MB":
+                              return value * 1024 * 1024;
+                            case "GB":
+                              return value * 1024 * 1024 * 1024;
+                            default:
+                              return value;
                           }
                         };
-                        
+
                         const originalBytes = parseSize(image.originalSize);
                         const newBytes = parseSize(image.size);
-                        const reduction = ((originalBytes - newBytes) / originalBytes) * 100;
-                        
-                        return reduction > 0 
+                        const reduction =
+                          ((originalBytes - newBytes) / originalBytes) * 100;
+
+                        return reduction > 0
                           ? `${reduction.toFixed(0)}% smaller`
                           : `${Math.abs(reduction).toFixed(0)}% larger`;
                       })()}

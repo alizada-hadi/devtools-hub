@@ -27,7 +27,7 @@ export default function ColorConverter() {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-8 max-w-7xl">
+      <div className="container mx-auto p-6">
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">

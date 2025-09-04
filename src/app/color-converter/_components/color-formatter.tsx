@@ -26,7 +26,7 @@ export function ColorFormats({ colorData }: ColorFormatsProps) {
       setCopiedFormat(format);
       toast(`${format} color value copied to clipboard`);
       setTimeout(() => setCopiedFormat(null), 2000);
-    } catch (err) {
+    } catch {
       toast("Failed to copy to clipboard");
     }
   };

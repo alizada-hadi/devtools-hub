@@ -1,6 +1,6 @@
 // src/app/_components/FontUploader.tsx
 import { useCallback, useState } from "react";
-import { Upload, FileText } from "lucide-react";
+import { Upload } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FontUploaderProps {

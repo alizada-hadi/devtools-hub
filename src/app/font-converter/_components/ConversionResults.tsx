@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
 import { Download, FileText, Loader2, Package } from "lucide-react"
-import { cn } from "@/lib/utils"
 import JSZip from 'jszip'
 
 interface ConversionResultsProps {

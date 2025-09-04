@@ -26,7 +26,6 @@ export const EmojiUploader: React.FC<EmojiUploaderProps> = ({
   emoji,
   setEmoji,
   search,
-  setSearch,
 }) => {
   const filteredEmojis = emojis.filter((e) => e.includes(search));
 

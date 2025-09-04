@@ -1,14 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useRouter } from "next/navigation";
+
 import {
   Code2,
   Image,
@@ -19,13 +13,22 @@ import {
   Zap,
   Sparkles,
   TrendingUp,
-  Clock,
+  FormInputIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { ToolCard } from "@/components/tools-card";
 import { SearchBar } from "@/components/search-bar";
 
 const allTools = [
+  {
+    title: "Form Generator",
+    description:
+      "Create beautiful forms with validation. Generate React Hook Form + Zod code instantly.",
+    icon: FormInputIcon,
+    category: "Generators",
+    url: "/form-generator",
+    isPopular: true,
+  },
   {
     title: "Favicon Generator",
     description:
@@ -91,7 +94,6 @@ const allTools = [
 ];
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const router = useRouter();
 
   const filteredTools = allTools.filter(
     (tool) =>
@@ -101,11 +103,7 @@ export default function Home() {
   );
 
   const popularTools = allTools.filter((tool) => tool.isPopular);
-  const recentTools = allTools.slice(0, 4);
 
-  const handleToolClick = (url: string) => {
-    router.push(url);
-  };
   return (
     <div className="p-6 space-y-8">
       {/* Hero Section */}
@@ -180,7 +178,7 @@ export default function Home() {
                   icon={tool.icon}
                   category={tool.category}
                   isPopular={tool.isPopular}
-                  onClick={() => handleToolClick(tool.url)}
+                  url={tool.url}
                 />
               ))}
             </div>
@@ -207,7 +205,7 @@ export default function Home() {
                   icon={tool.icon}
                   category={tool.category}
                   isPopular={tool.isPopular}
-                  onClick={() => handleToolClick(tool.url)}
+                  url={tool.url}
                 />
               ))}
             </div>
@@ -232,7 +230,7 @@ export default function Home() {
                   icon={tool.icon}
                   category={tool.category}
                   isPopular={tool.isPopular}
-                  onClick={() => handleToolClick(tool.url)}
+                  url={tool.url}
                 />
               ))}
             </div>

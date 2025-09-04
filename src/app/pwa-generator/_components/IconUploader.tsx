@@ -48,33 +48,39 @@ export function IconUploader({ config, onUpdate }: IconUploaderProps) {
     setIsDragOver(false);
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
+  const handleFileUpload = useCallback(
+    (file: File) => {
+      if (!file.type.startsWith("image/")) {
+        toast("Invalid file type");
+        return;
+      }
 
-    const files = Array.from(e.dataTransfer.files);
-    const imageFile = files.find((file) => file.type.startsWith("image/"));
+      if (file.size > 10 * 1024 * 1024) {
+        // 10MB limit
+        toast("File too large");
+        return;
+      }
 
-    if (imageFile) {
-      handleFileUpload(imageFile);
-    }
-  }, []);
+      onUpdate({ icon: file });
+      generateIcons(file);
+    },
+    [onUpdate]
+  );
 
-  const handleFileUpload = (file: File) => {
-    if (!file.type.startsWith("image/")) {
-      toast("Invalid file type");
-      return;
-    }
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragOver(false);
 
-    if (file.size > 10 * 1024 * 1024) {
-      // 10MB limit
-      toast("File too large");
-      return;
-    }
+      const files = Array.from(e.dataTransfer.files);
+      const imageFile = files.find((file) => file.type.startsWith("image/"));
 
-    onUpdate({ icon: file });
-    generateIcons(file);
-  };
+      if (imageFile) {
+        handleFileUpload(imageFile);
+      }
+    },
+    [handleFileUpload]
+  );
 
   const generateIcons = async (file: File) => {
     setIsGenerating(true);

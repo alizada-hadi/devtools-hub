@@ -18,7 +18,7 @@ import { EmojiUploader } from "@/components/favicon/EmojiUploader";
 import { ImageUploader } from "@/components/favicon/ImageUploader";
 
 // available favicon sizes
-const sizes = [16, 32, 48, 64, 128, 256];
+const sizes = [16, 32, 48, 64, 128, 256, 512];
 
 export type FaviconType = "image" | "text" | "emoji";
 
@@ -219,7 +219,7 @@ export default function FaviconGenerator() {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-8 max-w-7xl">
+      <div className="container mx-auto p-6 ">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-3">

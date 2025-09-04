@@ -2,14 +2,14 @@
 
 import {
   Code2,
-  Image,
+  Image as ImageIcon,
   Type,
   Key,
   Palette,
   FileCode,
   Zap,
   Search,
-  Settings,
+  FormInputIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,13 +26,19 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Image from "next/image";
 
 // Tool categories
 const toolCategories = [
   {
     label: "Generators",
     items: [
-      { title: "Favicon Generator", url: "/favicon-generator", icon: Image },
+      { title: "Form Generator", url: "/form-generator", icon: FormInputIcon },
+      {
+        title: "Favicon Generator",
+        url: "/favicon-generator",
+        icon: ImageIcon,
+      },
       { title: "PWA Icons", url: "/pwa-generator", icon: Zap },
       { title: "QR Code", url: "/qr-generator", icon: Code2 },
     ],
@@ -41,7 +47,7 @@ const toolCategories = [
     label: "Converters",
     items: [
       { title: "Font Converter", url: "/font-converter", icon: Type },
-      { title: "Image Converter", url: "/image-converter", icon: Image },
+      { title: "Image Converter", url: "/image-converter", icon: ImageIcon },
       { title: "Color Converter", url: "/color-converter", icon: Palette },
     ],
   },
@@ -71,8 +77,14 @@ export function AppSidebar() {
       {/* Sidebar Header */}
       <SidebarHeader className=" border-b border-sidebar-border">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
-            <Code2 className="w-5 h-5 text-white" />
+          <div className="w-12 h-12  rounded-lg flex items-center justify-center flex-shrink-0">
+            <Image
+              src="/images/dev-tool-hub.png"
+              alt="DevTools Hub"
+              className="object-cover w-10 h-10"
+              width={1000}
+              height={1000}
+            />
           </div>
           {!collapsed && (
             <div className="min-w-0">
@@ -136,23 +148,6 @@ export function AppSidebar() {
         ))}
 
         {/* Settings */}
-        <SidebarGroup className="mt-auto">
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  asChild
-                  className={getNavCls(isActive("/settings"))}
-                >
-                  <Link href="/settings">
-                    <Settings className="w-4 h-4 flex-shrink-0" />
-                    {!collapsed && <span>Settings</span>}
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );

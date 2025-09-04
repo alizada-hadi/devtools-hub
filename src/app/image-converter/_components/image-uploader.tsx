@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Upload, Image, X, FileImage } from "lucide-react";
+import { Upload, Image as ImageIcon, X, FileImage } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ImageUploaderProps {
   onImageUpload: (file: File) => void;
@@ -89,10 +91,12 @@ export function ImageUploader({
             ratio={16 / 9}
             className="bg-muted rounded-lg overflow-hidden"
           >
-            <img
+            <Image
               src={previewUrl}
               alt="Uploaded image"
               className="w-full h-full object-contain"
+              width={500}
+              height={500}
             />
           </AspectRatio>
           <Button
@@ -159,7 +163,7 @@ export function ImageUploader({
         ) : (
           <div className="space-y-4">
             <div className="p-3 bg-muted rounded-full w-fit mx-auto">
-              <Image className="w-8 h-8 text-muted-foreground" />
+              <ImageIcon className="w-8 h-8 text-muted-foreground" />
             </div>
             <div className="space-y-2">
               <p className="font-medium">

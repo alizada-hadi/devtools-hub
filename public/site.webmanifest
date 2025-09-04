@@ -1,0 +1,57 @@
+{
+  "name": "DevTools Hub",
+  "short_name": "DevTools Hub",
+  "description": "All your essential development tools in one place. Generate QR codes, convert images, create PWAs, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["developer", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/images/dev-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "QR Generator",
+      "short_name": "QR Generator",
+      "description": "Generate QR codes quickly",
+      "url": "/qr-generator",
+      "icons": [
+        {
+          "src": "/images/dev-logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Image Converter",
+      "short_name": "Image Converter",
+      "description": "Convert images between formats",
+      "url": "/image-converter",
+      "icons": [
+        {
+          "src": "/images/dev-logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

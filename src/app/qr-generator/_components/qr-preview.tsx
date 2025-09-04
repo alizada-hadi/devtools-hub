@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { QRData } from "./QRGenerator";
@@ -16,11 +16,7 @@ export function QRPreview({ qrData }: QRPreviewProps) {
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
   const [isGenerating, setIsGenerating] = useState(false);
 
-  useEffect(() => {
-    generateQRCode();
-  }, [qrData]);
-
-  const generateQRCode = async () => {
+  const generateQRCode = useCallback(async () => {
     if (!qrData.content.trim() || !canvasRef.current) return;
 
     setIsGenerating(true);
@@ -52,7 +48,11 @@ export function QRPreview({ qrData }: QRPreviewProps) {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [qrData]);
+
+  useEffect(() => {
+    generateQRCode();
+  }, [generateQRCode]);
 
   const downloadQRCode = () => {
     if (!qrCodeDataUrl) return;
@@ -78,7 +78,7 @@ export function QRPreview({ qrData }: QRPreviewProps) {
       ]);
 
       toast("QR code copied to clipboard.");
-    } catch (error) {
+    } catch {
       toast("Failed to copy QR code to clipboard.");
     }
   };
@@ -101,7 +101,7 @@ export function QRPreview({ qrData }: QRPreviewProps) {
         text: `Generated QR code for ${qrData.type}`,
         files: [file],
       });
-    } catch (error) {
+    } catch {
       toast("Failed to share QR code.");
     }
   };
