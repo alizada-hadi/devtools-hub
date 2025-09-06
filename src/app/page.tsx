@@ -110,7 +110,7 @@ export default function Home() {
       <div className="text-center space-y-6 py-12">
         <div className="space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            CodeKit
+            devtoolskits
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             All your essential development tools in one place. Fast, reliable,

@@ -21,10 +21,10 @@ const geistMono = Geist_Mono({
 });
 
 // SEO Configuration
-const siteName = "CodeKit";
+const siteName = "devtoolskits";
 const siteDescription =
   "All your essential development tools in one place. Generate QR codes, convert images, create PWAs, and more. Fast, reliable, and always free.";
-const siteUrl = "https://codekit.vercel.app"; // Replace with your actual domain
+const siteUrl = "https://devtoolskits.vercel.app"; // Replace with your actual domain
 const siteImage = "/images/dev-banner.jpeg";
 const siteLogo = "/images/dev-logo.png";
 
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     "free tools",
     "online tools",
   ],
-  authors: [{ name: "CodeKit Team" }],
-  creator: "CodeKit",
-  publisher: "CodeKit",
+  authors: [{ name: "devtoolskits Team" }],
+  creator: "devtoolskits",
+  publisher: "devtoolskits",
   formatDetection: {
     email: false,
     address: false,
@@ -87,8 +87,8 @@ export const metadata: Metadata = {
     title: siteName,
     description: siteDescription,
     images: [siteImage],
-    creator: "@codekit", // Replace with your actual Twitter handle
-    site: "@codekit", // Replace with your actual Twitter handle
+    creator: "@devtoolskits", // Replace with your actual Twitter handle
+    site: "@devtoolskits", // Replace with your actual Twitter handle
   },
   robots: {
     index: true,
@@ -156,12 +156,12 @@ export default function RootLayout({
     },
     creator: {
       "@type": "Organization",
-      name: "CodeKit Team",
+      name: "devtoolskits Team",
       url: siteUrl,
     },
     publisher: {
       "@type": "Organization",
-      name: "CodeKit",
+      name: "devtoolskits",
       url: siteUrl,
     },
     potentialAction: {
@@ -241,7 +241,7 @@ export default function RootLayout({
                       <SidebarTrigger />
                       <div className="flex items-center gap-2">
                         <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                          CodeKit
+                          devtoolskits
                         </h1>
                         <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
                           Beta

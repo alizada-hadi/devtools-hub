@@ -10,14 +10,14 @@ export function Footer() {
             <div className="w-8 h-8 bg-gradient-primary rounded-md flex items-center justify-center">
               <Image
                 src="/images/logo-white.png"
-                alt="CodeKit"
+                alt="devtoolskits"
                 className="object-cover w-7 h-7"
                 width={100}
                 height={100}
               />
             </div>
             <span className="font-semibold bg-gradient-primary bg-clip-text text-transparent">
-              CodeKit
+              devtoolskits
             </span>
           </div>
 
@@ -28,7 +28,7 @@ export function Footer() {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} CodeKit. All rights reserved.
+            © {new Date().getFullYear()} devtoolskits. All rights reserved.
           </div>
         </div>
       </div>

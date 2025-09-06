@@ -1,6 +1,6 @@
 {
-  "name": "CodeKit",
-  "short_name": "CodeKit",
+  "name": "devtoolskits",
+  "short_name": "devtoolskits",
   "description": "All your essential development tools in one place. Generate QR codes, convert images, create PWAs, and more.",
   "start_url": "/",
   "display": "standalone",

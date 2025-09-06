@@ -80,7 +80,7 @@ export function AppSidebar() {
           <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
             <Image
               src="/images/logo-white.png"
-              alt="CodeKit"
+              alt="devtoolskits"
               className="object-cover w-9 h-9"
               width={1000}
               height={1000}
@@ -89,7 +89,7 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="min-w-0">
               <h2 className="font-bold text-lg bg-gradient-primary bg-clip-text text-transparent">
-                CodeKit
+                devtoolskits
               </h2>
               <p className="text-xs text-muted-foreground truncate">
                 All-in-one toolkit
