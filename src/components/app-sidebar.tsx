@@ -77,11 +77,11 @@ export function AppSidebar() {
       {/* Sidebar Header */}
       <SidebarHeader className=" border-b border-sidebar-border">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12  rounded-lg flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
             <Image
-              src="/images/dev-tool-hub.png"
-              alt="DevTools Hub"
-              className="object-cover w-10 h-10"
+              src="/images/logo-white.png"
+              alt="CodeKit"
+              className="object-cover w-9 h-9"
               width={1000}
               height={1000}
             />
@@ -89,7 +89,7 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="min-w-0">
               <h2 className="font-bold text-lg bg-gradient-primary bg-clip-text text-transparent">
-                DevTools Hub
+                CodeKit
               </h2>
               <p className="text-xs text-muted-foreground truncate">
                 All-in-one toolkit

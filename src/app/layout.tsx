@@ -5,9 +5,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
-import { Github, Link } from "lucide-react";
+import { Github } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { ModeToggle } from "@/components/theme-switcher";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,10 +21,10 @@ const geistMono = Geist_Mono({
 });
 
 // SEO Configuration
-const siteName = "DevTools Hub";
+const siteName = "CodeKit";
 const siteDescription =
   "All your essential development tools in one place. Generate QR codes, convert images, create PWAs, and more. Fast, reliable, and always free.";
-const siteUrl = "https://devtools-hub.vercel.app"; // Replace with your actual domain
+const siteUrl = "https://codekit.vercel.app"; // Replace with your actual domain
 const siteImage = "/images/dev-banner.jpeg";
 const siteLogo = "/images/dev-logo.png";
 
@@ -51,9 +52,9 @@ export const metadata: Metadata = {
     "free tools",
     "online tools",
   ],
-  authors: [{ name: "DevTools Hub Team" }],
-  creator: "DevTools Hub",
-  publisher: "DevTools Hub",
+  authors: [{ name: "CodeKit Team" }],
+  creator: "CodeKit",
+  publisher: "CodeKit",
   formatDetection: {
     email: false,
     address: false,
@@ -86,8 +87,8 @@ export const metadata: Metadata = {
     title: siteName,
     description: siteDescription,
     images: [siteImage],
-    creator: "@devtoolshub", // Replace with your actual Twitter handle
-    site: "@devtoolshub", // Replace with your actual Twitter handle
+    creator: "@codekit", // Replace with your actual Twitter handle
+    site: "@codekit", // Replace with your actual Twitter handle
   },
   robots: {
     index: true,
@@ -155,12 +156,12 @@ export default function RootLayout({
     },
     creator: {
       "@type": "Organization",
-      name: "DevTools Hub Team",
+      name: "CodeKit Team",
       url: siteUrl,
     },
     publisher: {
       "@type": "Organization",
-      name: "DevTools Hub",
+      name: "CodeKit",
       url: siteUrl,
     },
     potentialAction: {
@@ -240,7 +241,7 @@ export default function RootLayout({
                       <SidebarTrigger />
                       <div className="flex items-center gap-2">
                         <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                          DevTools Hub
+                          CodeKit
                         </h1>
                         <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
                           Beta

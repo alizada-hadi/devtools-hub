@@ -1,4 +1,5 @@
-import { Code2, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,11 +7,17 @@ export function Footer() {
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-gradient-primary rounded-md flex items-center justify-center">
-              <Code2 className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-primary rounded-md flex items-center justify-center">
+              <Image
+                src="/images/logo-white.png"
+                alt="CodeKit"
+                className="object-cover w-7 h-7"
+                width={100}
+                height={100}
+              />
             </div>
             <span className="font-semibold bg-gradient-primary bg-clip-text text-transparent">
-              DevTools Hub
+              CodeKit
             </span>
           </div>
 
@@ -21,7 +28,7 @@ export function Footer() {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            © 2024 DevTools Hub. All rights reserved.
+            © {new Date().getFullYear()} CodeKit. All rights reserved.
           </div>
         </div>
       </div>
