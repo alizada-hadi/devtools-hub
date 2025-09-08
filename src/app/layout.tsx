@@ -241,7 +241,7 @@ export default function RootLayout({
                       <SidebarTrigger />
                       <div className="flex items-center gap-2">
                         <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                          devtoolskits
+                          DevTool Kits
                         </h1>
                         <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
                           Beta
