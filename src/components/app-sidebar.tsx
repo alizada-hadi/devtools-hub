@@ -87,10 +87,10 @@ const toolCategories = [
         isImplemented: false,
       },
       {
-        title: "CSS Grid Generator",
+        title: "Grid Layout Generator",
         url: "/css-grid-generator",
         icon: Code2,
-        isImplemented: false,
+        isImplemented: true,
       },
     ],
   },

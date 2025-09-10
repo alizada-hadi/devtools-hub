@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     "developer utilities",
     "free tools",
     "online tools",
+    "grid layout generator",
   ],
   authors: [{ name: "devtoolskits Team" }],
   creator: "devtoolskits",
@@ -183,6 +184,7 @@ export default function RootLayout({
       "Base64 Encoder/Decoder",
       "URL Encoder/Decoder",
       "JWT Decoder",
+      "Grid Layout Generator",
     ],
   };
 
@@ -243,21 +245,21 @@ export default function RootLayout({
                         <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                           DevTool Kits
                         </h1>
-                        <span className="text-xs bg-primary/10 text-foreground px-2 py-1 rounded-full">
-                          Beta
-                        </span>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      {/* TODO: Add GitHub link */}
                       <Link
                         href="https://github.com/alizada-hadi/devtools-hub"
                         target="_blank"
                       >
+                        {/* in mobile view, I just want to show the github icon */}
+                        {/* in larger device I want to show the text "Star on Github" as well */}
                         <Button variant="ghost" size="sm">
                           <Github className="w-4 h-4" />
-                          Star on GitHub
+                          <span className="hidden md:block">
+                            Star on GitHub
+                          </span>
                         </Button>
                       </Link>
 

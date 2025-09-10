@@ -96,12 +96,12 @@ const allTools = [
     isImplemented: false,
   },
   {
-    title: "CSS Grid Generator",
+    title: "Grid Layout Generator",
     description: "Generate CSS Grid layouts with visual interface",
     icon: Code2,
     category: "Generators",
     url: "/css-grid-generator",
-    isImplemented: false,
+    isImplemented: true,
   },
 
   // Converters
